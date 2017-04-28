@@ -7,7 +7,8 @@ import page from 'page';
 export default function() {
     linkHandler();
     const content = template();
-    $('#app').html(content).then(function () {
+    $('#app').html(content);
+    $( document ).ready(function () {
         page('/new', addCar);
-    })
+    });
 }

@@ -1,32 +1,44 @@
-<form id="carInfo">
-        <label for="carBrand">Марка: </label> <br>
-        <select id="carBrand">
-                <option>Mazda</option>
-                <option>Peugeot</option>
-        </select>
-
-        <label for="carModel">Модель: </label> <br>
-        <select id="carModel">
-                <option>1</option>
-                <option>2</option>
-        </select>
-
-        <label for="mileage">Пробег: </label> <br>
-        <input id="mileage" type="number"> <br>
-
-        <label>Вид топлива: </label> <br>
-        <input type="radio" name="gas" id="petrol"> <label for="petrol">Бензин </label>
-        <input type="radio" name="gas" id="diesel"> <label for="diesel">Дизель </label>
-
-        <label for="capacity">Объем двигателя: </label> <br>
-        <input id="capacity" type="number"> <br>
-
-        <label>Тип коробки передач: </label> <br>
-        <input type="radio" name="transmission" id="manual"> <label for="manual">Механическая </label>
-        <input type="radio" name="transmission" id="automatic"> <label for="automatic">Автоматическая </label>
-
-        <label for="about">Описание: </label> <br>
-        <textarea id="about"></textarea>
-
-        <button type="submit"></button>
+<form>
+        <ul class="newCar">
+                <li>
+                        <label for="carBrand">Марка: </label> <br>
+                        <select id="carBrand">
+                                <option>Mazda</option>
+                                <option>Peugeot</option>
+                        </select>
+                </li>
+                <li>
+                        <label for="carModel">Модель: </label> <br>
+                        <select id="carModel">
+                                <option>1</option>
+                                <option>2</option>
+                        </select>
+                </li>
+                <li>
+                        <label for="mileage">Пробег: </label> <br>
+                        <input id="mileage" type="number">
+                </li>
+                <li id="gas">
+                        <label>Вид топлива: </label> <br>
+                        <input type="radio" name="gas" id="petrol" value="petrol">> <label for="petrol">Бензин </label>
+                        <input type="radio" name="gas" id="diesel" value="diesel"> <label for="diesel">Дизель </label>
+                </li>
+                <li>
+                        <label for="capacity">Объем двигателя: </label> <br>
+                        <input id="capacity" type="number">
+                </li>
+                <li id="transmission">
+                        <label>Тип коробки передач: </label> <br>
+                        <input type="radio" name="transmission" id="manual" value="manual"> <label for="manual">Механическая </label>
+                        <input type="radio" name="transmission" id="automatic" value="automatic"> <label for="automatic">Автоматическая </label>
+                </li>
+                <li>
+                        <label for="about">Описание: </label> <br>
+                        <textarea id="about"></textarea>
+                </li>
+                <li>
+                        <button type="submit">Сохранить</button>
+                        <button>Отменить</button>
+                </li>
+        </ul>
 </form>
