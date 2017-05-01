@@ -1,14 +1,14 @@
 import $ from 'jquery';
-import template from '../templates/admin-main.ejs';
-import addCar from './new-car';
-import {linkHandler} from '../linkHandler';
+import template from '../view/templates/admin-main.ejs';
+import addCar from './edit-car-page';
+//import {linkHandler} from '../linkHandler';
 import page from 'page';
 
 export default function() {
-    linkHandler();
+    //linkHandler();
     const content = template();
     $('#app').html(content);
-    $( document ).ready(function () {
+    /*$( document ).ready(function () {
         page('/new', addCar);
-    });
+    });*/
 }

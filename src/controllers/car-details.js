@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import template from '../templates/car-details.ejs';
+import template from '../view/templates/car-details.ejs';
 
 export default function(id) {
     const content = template({
