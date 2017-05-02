@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import template from '../view/templates/main.ejs';
+import template from '../view/templates/index.ejs';
 
 export default function() {
     const content = template();

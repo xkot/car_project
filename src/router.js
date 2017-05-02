@@ -3,30 +3,27 @@ import page from 'page';
 import carDetailsController from './controllers/car-details';
 import admin from './controllers/admin-main';
 import addCar from './controllers/edit-car-page';
-import main from './controllers/main';
+import index from './controllers/index';
 
-    $(document).on('click', 'a[href^="/"]', function (e) {
-        const href = $(e.currentTarget).attr('href');
-        switch (href) {
-            case '/admin':
-                page('/admin', admin);
-                break;
-            case '/car/:id':
-                page('/car/:id', carDetailsController);
-                break;
-            case '/new':
-                page('/new', addCar);
-                break;
-            case '':
-                page('', main);
-                break;
-        }
-        e.preventDefault();
+$(document).on('click', 'a[href^="/"]', function (e) {
+    const href = $(e.currentTarget).attr('href');
+    page(href);
+    e.preventDefault();
+});
 
-    });
+$(window).on('load', function (e) {
+    const href = window.location.pathname + window.location.search;
+    page.replace(href);
+    e.preventDefault();
+});
 
+$(window).on('popstate', function (e) {
+    const href = window.location.pathname + window.location.search;
+    page.replace(href);
+    e.preventDefault();
+});
 
-
-//export {
-//    linkHandler
-//}
+page('/admin', admin);
+page('/car/:id', carDetailsController);
+page('/new', addCar);
+page('/', index);

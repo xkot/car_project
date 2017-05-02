@@ -4,13 +4,14 @@
   "author": "",
   "private": true,
   "scripts": {
-    "watchify": "watchify -e src/main.js -o dist/build.js",
-    "serve": "http-server -o -s -c 1 -a localhost",
+    "watchify": "watchify -e src/router.js -o dist/build.js",
+    "serve": "node server.js",
     "dev": "npm-run-all --parallel watchify serve"
   },
   "dependencies": {
     "jquery": "^3.2.1",
-    "page": "^1.7.1"
+    "page": "^1.7.1",
+    "spa-server": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
