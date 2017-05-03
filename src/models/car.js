@@ -1,15 +1,16 @@
 class Car {
 
-    constructor(brand, model, mileage, gas, transmission, capacity, about, id, photo) {
-        this.brand = brand;
-        this.model = model;
-        this.mileage = mileage;
-        this.gas = gas;
-        this.transmition = transmission;
-        this.capacity = capacity;
-        this.about = about;
-        this.id = id;
-        this.photo = photo;
+    constructor(options) {
+        this.brand = options.brand;
+        this.model = options.model;
+        this.mileage = options.mileage;
+        this.gasoline = options.gasoline;
+        this.transmission = options.transmission;
+        this.capacity = options.capacity;
+        this.price = options.price;
+        this.about = options.about;
+        //this.id = options.id;
+        this.photo = options.photo;
     }
 }
 

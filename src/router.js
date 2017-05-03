@@ -2,7 +2,7 @@ import $ from 'jquery';
 import page from 'page';
 import carDetailsController from './controllers/car-details';
 import admin from './controllers/admin-main';
-import addCar from './controllers/edit-car-page';
+import addCar from './controllers/admin-components/edit-car-page';
 import index from './controllers/index';
 
 $(document).on('click', 'a[href^="/"]', function (e) {
@@ -25,5 +25,5 @@ $(window).on('popstate', function (e) {
 
 page('/admin', admin);
 page('/car/:id', carDetailsController);
-page('/new', addCar);
+page('/admin/new', addCar);
 page('/', index);

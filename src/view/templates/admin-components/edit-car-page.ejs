@@ -33,12 +33,17 @@
                         <input type="radio" name="transmission" id="automatic" value="automatic"> <label for="automatic">Автоматическая </label>
                 </li>
                 <li>
+                        <label for="price">Цена: </label> <br>
+                        <input id="price" type="number">
+                        <label> BYN</label>
+                </li>
+                <li>
                         <label for="about">Описание: </label> <br>
                         <textarea id="about"></textarea>
                 </li>
                 <li>
-                        <button type="submit">Сохранить</button>
-                        <button>Отменить</button>
+                        <button type="submit" id="saveCar">Сохранить</button>
+                        <button type="reset">Очистить</button>
                 </li>
         </ul>
 </form>

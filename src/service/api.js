@@ -46,5 +46,6 @@ function removeCar(id) {
 export {
     checkStorage,
     addCar,
+    getCars,
     removeCar
 }
