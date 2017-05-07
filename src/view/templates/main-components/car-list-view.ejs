@@ -1,0 +1,24 @@
+<div id="carList">
+    <table class="table table-bordered">
+        <tbody>
+        <% carTr.forEach(function (cars) { %>
+        <tr class="carTr">
+            <% cars.forEach(function (car) { %>
+                <td>
+                    <img id="img" height="100px" src="<%= car.photo %>">
+                    <p id="carName">
+                        <%= car.brand %>, <%= car.model %>
+                    </p>
+                    <p id="carPrice">
+                        <%= car.price %>
+                    </p>
+                    <p id="otherInfo">
+                        <%= car.year %>, <%= car.mileage %>
+                    </p>
+                </td>
+            <% }); %>
+        </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>

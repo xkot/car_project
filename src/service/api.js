@@ -1,13 +1,9 @@
 const CARS_KEY = 'cars';
 const ID_KEY = 'nextId';
 
-function checkStorage() {
-    if (JSON.stringify(localStorage, "") === "{}") {
-        return false;
-    }
-    else {
-        return true;
-    }
+function findCars() {
+    let cars = getCars();
+    return (cars.length !== 0);
 }
 
 function nextId() {
@@ -33,7 +29,8 @@ function addCar(car) {
 
 function removeCar(id) {
     const cars = getCars();
-    const car = cars.find((car) => car.id === id);
+    const car = cars.find((car) => Number(car.id) === Number(id));
+
     if (car) {
         const index = cars.indexOf(car);
         cars.splice(index, 1);
@@ -43,9 +40,29 @@ function removeCar(id) {
     }
 }
 
+function getCarById(id) {
+    const cars = getCars();
+    const currentCar = cars.find((car) => Number(car.id) === Number(id));
+    if (currentCar) {
+        return currentCar;
+    } else {
+        throw new Error(`No car with id ${id}`)
+    }
+}
+
+function editCar(editedCar, id) {
+    const cars = getCars();
+    let carIndex = cars.findIndex((car) => car.id === Number(id));
+    editedCar.id = id;
+    cars[carIndex] = editedCar;
+    setCars(cars);
+}
+
 export {
-    checkStorage,
+    findCars,
     addCar,
     getCars,
-    removeCar
+    removeCar,
+    getCarById,
+    editCar
 }

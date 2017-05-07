@@ -1,17 +1,31 @@
-ul.newCar {
-    list-style-type: none;
-    font-family: Cuprum;
-    font-size: larger;
-    background-color: ivory;
+#app {
+    position: absolute;
+    width: 100%;
+}
+#searchBlock {
+    width: 550px;
+    margin: 20px;
+}
+#carList {
     padding: 30px;
+}
+.header {
+    background-color: lightgray;
+    padding: 5px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.5);
+}
+.header-main {
+    background-color: gold;
+    padding: 10px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.5);
+}
+form {
     max-width: 550px;
     margin: auto;
 }
-
-ul.newCar li {
-    margin-bottom: 5%;
+thead {
+    background-color: whitesmoke;
 }
-
-ul.newCar select, textarea {
-    width: 90%;
+h4 {
+    margin-top: 20px;
 }

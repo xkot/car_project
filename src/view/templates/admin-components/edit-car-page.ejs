@@ -1,49 +1,60 @@
-<form>
-        <ul class="newCar">
-                <li>
-                        <label for="carBrand">Марка: </label> <br>
-                        <select id="carBrand">
-                                <option>Mazda</option>
-                                <option>Peugeot</option>
-                        </select>
-                </li>
-                <li>
-                        <label for="carModel">Модель: </label> <br>
-                        <select id="carModel">
-                                <option>1</option>
-                                <option>2</option>
-                        </select>
-                </li>
-                <li>
-                        <label for="mileage">Пробег: </label> <br>
-                        <input id="mileage" type="number">
-                </li>
-                <li id="gasoline">
-                        <label>Вид топлива: </label> <br>
-                        <input type="radio" name="gas" id="petrol" value="petrol"> <label for="petrol">Бензин </label>
-                        <input type="radio" name="gas" id="diesel" value="diesel"> <label for="diesel">Дизель </label>
-                </li>
-                <li>
-                        <label for="capacity">Объем двигателя: </label> <br>
-                        <input id="capacity" type="number">
-                </li>
-                <li id="transmission">
-                        <label>Тип коробки передач: </label> <br>
-                        <input type="radio" name="transmission" id="manual" value="manual"> <label for="manual">Механическая </label>
-                        <input type="radio" name="transmission" id="automatic" value="automatic"> <label for="automatic">Автоматическая </label>
-                </li>
-                <li>
-                        <label for="price">Цена: </label> <br>
-                        <input id="price" type="number">
-                        <label> BYN</label>
-                </li>
-                <li>
-                        <label for="about">Описание: </label> <br>
-                        <textarea id="about"></textarea>
-                </li>
-                <li>
-                        <button type="submit" id="saveCar">Сохранить</button>
-                        <button type="reset">Очистить</button>
-                </li>
-        </ul>
+<form class="editCar panel panel-primary">
+    <div class="panel-heading">
+        <button type="button" id="cancel" class="btn btn-primary btn" aria-label="Left Align">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Вернуться к списку объявлений
+        </button>
+    </div>
+
+    <div class="panel-body input-group">
+        <label for="carBrand" class="input-group-addon" id="basic-addon1">Марка: </label>
+        <input id="carBrand" name="carBrand" class="form-control" aria-describedby="basic-addon1">
+    </div>
+    <div class="panel-body input-group">
+        <label for="carModel" class="input-group-addon" id="basic-addon2">Модель: </label>
+        <input id="carModel" name="carModel" class="form-control" aria-describedby="basic-addon2">
+    </div>
+    <div class="panel-body input-group">
+        <label for="year" class="input-group-addon" id="basic-addon2">Год выпуска: </label>
+        <input id="year" name="year" class="form-control" aria-describedby="basic-addon2">
+    </div>
+    <div class="panel-body input-group">
+        <label for="mileage" class="input-group-addon" id="basic-addon3">Пробег: </label>
+        <input id="mileage" name="mileage" type="number" aria-describedby="basic-addon3">
+    </div>
+    <div id="gasoline" class="panel-body input-group radio">
+        <label class="radio-inline"><input type="radio" name="gas" id="petrol" value="petrol"> Бензин </label>
+        <label class="radio-inline"><input type="radio" name="gas" id="diesel" value="diesel"> Дизель </label>
+    </div>
+    <div class="panel-body input-group">
+        <label for="capacity" class="input-group-addon">Объем двигателя: </label>
+        <input id="capacity">
+    </div>
+    <div id="transmission" class="panel-body input-group radio">
+        <label class="radio-inline"><input type="radio" name="transmission" id="manual" value="manual"> Механика </label>
+        <label class="radio-inline"><input type="radio" name="transmission" id="automatic" value="automatic"> Автомат </label>
+    </div>
+    <div class="panel-body input-group">
+        <label for="price" class="input-group-addon">Цена: </label>
+        <input id="price" type="number">
+        <label> BYN</label>
+    </div>
+    <div class="panel-body input-group">
+        <label for="about"  class="input-group-addon">Описание: </label>
+        <textarea id="about" class="form-control"></textarea>
+    </div>
+    <div class="panel-body input-group">
+        <input id="photo" type="file">
+        <img id="img" height="150" class="thumbnail">
+    </div>
+    <div class="panel-footer">
+        <button type="submit" id="saveCar" class="btn btn-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            Сохранить
+        </button>
+        <button type="reset" class="btn btn-warning">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            Очистить
+        </button>
+    </div>
 </form>

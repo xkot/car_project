@@ -1,28 +1,35 @@
-<table class="table">
-    <tr>
-        <td>Фото</td>
-        <td>Марка</td>
-        <td>Модель</td>
-        <td>Цена</td>
-        <td>Другая информация</td>
-        <td></td>
-    </tr>
-    <% cars.forEach(function (car) { %>
-    <tr class="carTr">
-        <td><%= car.photo %></td>
-        <td><%= car.brand %></td>
-        <td><%= car.model %></td>
-        <td><%= car.price %></td>
-        <td>
-            Пробег: <%= car.mileage %> <br>
-            Топливо: <%= car.gasoline %> <br>
-            КПП: <%= car.transmission %> <br>
-            Объем двигателя: <%= car.capacity %>
-        </td>
-        <td>
-            <button type="button" class="deleteButton" hidden>Удалить</button> <br>
-            <button type="button" class="editButton" hidden>Редактировать</button>
-        </td>
-    </tr>
-    <% }); %>
-</table>
+<div id="carList">
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <td>Фото</td>
+            <td>Марка</td>
+            <td>Модель</td>
+            <td>Цена</td>
+            <td>Другая информация</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <% cars.forEach(function (car) { %>
+        <tr class="carTr">
+            <td><img id="img" height="100px" src="<%= car.photo %>"></td>
+            <td><%= car.brand %></td>
+            <td><%= car.model %></td>
+            <td><%= car.price %></td>
+            <td>
+                Пробег: <%= car.mileage %> <br>
+                Топливо: <%= car.gasoline %> <br>
+                КПП: <%= car.transmission %> <br>
+                Объем двигателя: <%= car.capacity %>
+            </td>
+            <td id="<%= car.id %>">
+                <button type="button" class="deleteButton">Удалить</button>
+                <br>
+                <button type="button" class="editButton">Редактировать</button>
+            </td>
+        </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>

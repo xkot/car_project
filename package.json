@@ -9,7 +9,10 @@
     "dev": "npm-run-all --parallel watchify serve"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "jquery": "^2.2.4",
+    "jquery-ui-browserify": "^1.11.0-pre-seelio",
+    "jquery-validation": "^1.16.0",
     "page": "^1.7.1",
     "spa-server": "^1.0.0"
   },
@@ -18,10 +21,10 @@
     "babel-preset-es2015": "^6.24.0",
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
-    "jstify": "^0.14.0",
-    "watchify": "^3.9.0",
     "http-server": "^0.9.0",
-    "npm-run-all": "^4.0.2"
+    "jstify": "^0.14.0",
+    "npm-run-all": "^4.0.2",
+    "watchify": "^3.9.0"
   },
   "browserify": {
     "transform": [
