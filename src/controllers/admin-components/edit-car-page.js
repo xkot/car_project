@@ -21,30 +21,32 @@ export default function () {
         }
         form.validate({
             rules: {
-                carBrand: {
-                    required: true,
-                },
-                carModel: {
-                    required: true,
-                },
+                carBrand: 'required',
+                carModel: 'required',
                 mileage: {
                     required: true,
                     min: 0
                 },
                 price: {
                     required: true,
+                    number: true,
                 },
                 capacity: {
                     required: true,
                     number: true,
-                    min: 1,
+                    min: 0.8,
                     max: 9
                 }
             },
             messages: {
                 carBrand: 'Введите название марки',
                 carModel: 'Введите название модели',
-                mileage: 'Введите пробег автомобиля'
+                mileage: {
+                    required: 'Введите пробег автомобиля'
+                },
+                capacity: {
+                    required: 'Введите объем двигателя'
+                }
             },
             submitHandler: function () {
                 if (document.location.pathname === '/admin/edit') {
@@ -87,14 +89,14 @@ function setCarInfo(options) {
     $('#carModel').val(options.model);
     $('#mileage').val(options.mileage);
     $('#year').val(options.year);
-    if (options.gasoline === 'petrol') {
+    if (options.gasoline === 'Бензин') {
         $('#petrol').prop('checked', true);
     }
-    else {
+    else if (options.gasoline === 'Дизель') {
         $('#diesel').prop('checked', true);
     }
     $('#capacity').val(options.capacity);
-    if (options.transmission === 'manual') {
+    if (options.transmission === 'Механика') {
         $('#manual').prop('checked', true);
     }
     else {

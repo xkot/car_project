@@ -1,13 +1,11 @@
 <h2>
-    <span class="col-sm-9 header-main">Главная страница</span>
+    <span class="col-sm-9 header-main">Главная страница
+        <input type="search" id="searchInput" class="text-right input-sm">
+        <span class="btn-sm glyphicon glyphicon-search" aria-hidden="true"></span>
+    </span>
     <span class="col-sm-3 header-main text-center">
         <a href="/admin" class="btn btn-success">Панель администрирования</a>
     </span>
 </h2>
-<div id="searchBlock">
-        <input type="text" id="search">
-        <button class="btn btn-success"> Искать </button>
-</div>
-<div id="listView"></div>
-
-<a href="/car/42">Car</a>
+<div id="listView" class="col-sm-9"></div>
+<div id="filterBlock" class="col-sm-3"></div>

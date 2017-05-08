@@ -4,6 +4,7 @@ import template from '../view/templates/admin-main.ejs';
 import {findCars} from '../service/api';
 import {getCars} from '../service/api';
 import {removeCar} from '../service/api';
+import {setRandom} from '../service/api';
 
 export default function() {
     const content = template();
@@ -19,24 +20,27 @@ function showList() {
             cars: carsArray
         });
         contentPlace.html(list);
-        $('table').on('click', '.deleteButton', function () {
-            if (confirm('Вы уверены, что хотите удалить данную запись?')) {
+        $(document).ready(function () {
+            let table = $('table');
+            table.filter('.deleteButton').className = 'hidden';
+            table.on('click', '.deleteButton', function () {
+                if (confirm('Вы уверены, что хотите удалить данную запись?')) {
+                    const id = $(this).parent().attr('id');
+                    removeCar(id);
+                    showList();
+                }
+            });
+            table.on('click', '.editButton', function () {
                 const id = $(this).parent().attr('id');
-                removeCar(id);
-                showList();
-            }
+                document.location.href = `/admin/edit#${id}`;
+            });
         });
-        $('table').on('click', '.editButton', function () {
-            const id = $(this).parent().attr('id');
-            document.location.href = `/admin/edit#${id}`;
-        });
-        // $('table').on('hover', '.carTr', function (event) {
-        //      let target = event.target;
-        //      console.log(target);
-        //      $('target .deleteButton').show();
-        // });
     }
     else {
         contentPlace.html('<h4>База машин отсутствует.</h4>');
+        contentPlace.append('<button>Заполнить случайными</button>');
+        $(document).ready(function () {
+            $('button').on('click', setRandom);
+        });
     }
 }

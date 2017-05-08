@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "elasticlunr": "^0.9.5",
     "jquery": "^2.2.4",
     "jquery-ui-browserify": "^1.11.0-pre-seelio",
     "jquery-validation": "^1.16.0",
