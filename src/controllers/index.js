@@ -63,5 +63,12 @@ export default function() {
             let searchValue = $('#searchInput').val();
             document.location.href = `/search?${searchValue}`;
         });
+        $('#filterBlock').on('submit', function (e) {
+            let filterValue = '';
+            filterValue += $('#brand').val() + '*';
+            filterValue += $('#model').val();
+            document.location.href = `/search?${filterValue}`;
+            e.preventDefault();
+        })
     });
 }

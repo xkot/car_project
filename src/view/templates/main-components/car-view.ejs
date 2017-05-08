@@ -11,6 +11,8 @@
             <td>Цена: </td>
             <td>
                 <%= car.price %> BYN<br>
+                <%= Math.round(car.price/1.885) %> USD<br>
+                <%= Math.round(car.price/2.075) %> EUR
             </td>
         </tr>
         <tr>

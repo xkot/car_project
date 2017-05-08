@@ -7,6 +7,7 @@ import {getCars} from '../../service/api';
 export default function() {
     let search = document.location.search;
     let searchValue = search.substr(1);
+    let arrSearch = searchValue.split('*');
     const allCars = getCars();
     let index = elasticlunr(function () {
         this.addField('brand');
@@ -17,13 +18,36 @@ export default function() {
     allCars.forEach(function (car) {
         index.addDoc(car);
     });
-    const searchResult = index.search(searchValue);
-    console.log(searchResult);
     let foundCars = [];
-    searchResult.forEach(function (element, i) {
-        let id = element.ref;
-        foundCars[i] = getCarById(id);
-    });
+    if (arrSearch.length === 1) {
+        const searchResult = index.search(searchValue);
+        searchResult.forEach(function (element, i) {
+            let id = element.ref;
+            foundCars[i] = getCarById(id);
+        });
+    }
+    else {
+        let carBrand = arrSearch[0];
+        let carModel = arrSearch[1];
+        let filterResult = [];
+        if (carBrand) {
+            alert(carBrand);
+            filterResult = index.search({
+                brand: carBrand
+            });
+        }
+        if (carModel) {
+            alert(carModel);
+            filterResult = index.search({
+                model: carModel
+            });
+        }
+        filterResult.forEach(function (element, i) {
+            let id = element.ref;
+            foundCars[i] = getCarById(id);
+        });
+    }
+
     const searchList = searchTemplate({
         cars: foundCars,
         carAmount: foundCars.length
