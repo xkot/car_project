@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'jqury-ui';
 import elasticlunr from 'elasticlunr';
 import filtertemplate from '../view/templates/filter.ejs';
 import template from '../view/templates/index.ejs';
@@ -12,6 +13,10 @@ export default function() {
     const filter = filtertemplate();
     const filterBlock = $('.filterBlock');
     filterBlock.html(filter);
+    const brandNames = ["Acura", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Bugatti", "Buick", "Volkswagen", "Volvo", "Lada", "Geely", "Dacia", "Daewoo", "Daihatsu", "Dodge", "Jeep", "Infiniti", "Isuzu", "IVECO", "Cadillac", "Citroen",  "Kia",  "Lamborghini", "Lancia", "Land Rover", "Lexus", "Lincoln", "Maserati", "Maybach", "McLaren", "Mercedes-Benz", "Mitsubishi", "Nissan", "Opel", "Peugeot", "Porsche", "Renault", "Rolls-Royce", "Rover", "Saab", "SEAT", "Skoda", "Smart", "Subaru", "Suzuki", "Toyota", "Ferrari", "Fiat", "Ford", "Honda", "Hummer", "Hyundai", "Chevrolet", "Chrysler", "Jaguar"];
+    $('#carBrand').autocomplete({
+        source: brandNames
+    });
     if (!document.location.search) {
         const allCars = getCars();
         allCars.sort(function (current, next) {
@@ -91,6 +96,7 @@ export default function() {
             let maxPrice = arrSearch[3].substr(8);
             let minMileage = arrSearch[4].substr(11);
             let maxMileage = arrSearch[5].substr(11);
+            let transmission = arrSearch[6].substr(13);
             if (carBrand) {
                 foundCars = foundCars.filter(function (car) {
                     return car.brand.toUpperCase() === carBrand.toUpperCase();
@@ -121,6 +127,18 @@ export default function() {
                     return Number(car.mileage) <= Number(maxMileage);
                 });
             }
+            if (transmission) {
+                if (transmission === 'auto') {
+                    foundCars = foundCars.filter(function (car) {
+                        return car.transmission === 'Автомат';
+                    });
+                }
+                else {
+                    foundCars = foundCars.filter(function (car) {
+                        return car.transmission === 'Механика';
+                    });
+                }
+            }
             $('#brand').val(carBrand);
             $('#model').val(carModel);
             $('#minPrice').val(minPrice);
@@ -142,6 +160,24 @@ export default function() {
         let searchValue = $('#searchInput').val();
         document.location.href = `/search?${searchValue}`;
     });
+    filterBlock.on('click', '#manual', function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+        }
+        else {
+            $(this).addClass('active');
+            $('#auto').removeClass('active');
+        }
+    });
+    filterBlock.on('click', '#auto', function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+        }
+        else {
+            $(this).addClass('active');
+            $('#manual').removeClass('active');
+        }
+    });
     filterBlock.on('submit', function (e) {
         let filterValue = '';
         filterValue += 'brand=' + $('#brand').val();
@@ -150,8 +186,8 @@ export default function() {
         filterValue += '&toPrice=' + $('#maxPrice').val();
         filterValue += '&minMileage=' + $('#minMileage').val();
         filterValue += '&maxMileage=' + $('#maxMileage').val();
+        filterValue += '&transmission=' + ($('#transmission').children('.active').attr('id') || '');
         document.location.href = `/search?${filterValue}`;
         e.preventDefault();
     });
-
 }

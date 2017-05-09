@@ -10,23 +10,40 @@ import {setRandom} from '../service/api';
 export default function() {
     const content = template();
     $('#app').html(content);
-    showList();
-    $(document).ready(function () {
-        const filter = filtertemplate();
-        const filterBlock = $('.filterBlock');
-        filterBlock.html(filter);
-        filterBlock.on('submit', function (e) {
-            let filterValue = '';
-            filterValue += 'brand=' + $('#brand').val();
-            filterValue += '&model=' + $('#model').val();
-            filterValue += '&fromPrice=' + $('#minPrice').val();
-            filterValue += '&toPrice=' + $('#maxPrice').val();
-            filterValue += '&minMileage=' + $('#minMileage').val();
-            filterValue += '&maxMileage=' + $('#maxMileage').val();
-            document.location.href = `/admin/search?${filterValue}`;
-            e.preventDefault();
-        })
+    const filter = filtertemplate();
+    const filterBlock = $('.filterBlock');
+    filterBlock.html(filter);
+    filterBlock.on('click', '#manual', function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+        }
+        else {
+            $(this).addClass('active');
+            $('#auto').removeClass('active');
+        }
     });
+    filterBlock.on('click', '#auto', function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+        }
+        else {
+            $(this).addClass('active');
+            $('#manual').removeClass('active');
+        }
+    });
+    filterBlock.on('submit', function (e) {
+        let filterValue = '';
+        filterValue += 'brand=' + $('#brand').val();
+        filterValue += '&model=' + $('#model').val();
+        filterValue += '&fromPrice=' + $('#minPrice').val();
+        filterValue += '&toPrice=' + $('#maxPrice').val();
+        filterValue += '&minMileage=' + $('#minMileage').val();
+        filterValue += '&maxMileage=' + $('#maxMileage').val();
+        filterValue += '&transmission=' + ($('#transmission').children('.active').attr('id') || '');
+        document.location.href = `/admin/search?${filterValue}`;
+        e.preventDefault();
+    });
+    showList();
 }
 
 function showList() {
@@ -43,6 +60,7 @@ function showList() {
             let maxPrice = arrSearch[3].substr(8);
             let minMileage = arrSearch[4].substr(11);
             let maxMileage = arrSearch[5].substr(11);
+            let transmission = arrSearch[6].substr(13);
             if (carBrand) {
                 carsArray = carsArray.filter(function (car) {
                     return car.brand.toUpperCase() === carBrand.toUpperCase();
@@ -73,6 +91,24 @@ function showList() {
                     return Number(car.mileage) <= Number(maxMileage);
                 });
             }
+            if (transmission) {
+                if (transmission === 'auto') {
+                    carsArray = carsArray.filter(function (car) {
+                        return car.transmission === 'Автомат';
+                    });
+                }
+                else {
+                    carsArray = carsArray.filter(function (car) {
+                        return car.transmission === 'Механика';
+                    });
+                }
+            }
+            $('#brand').val(carBrand);
+            $('#model').val(carModel);
+            $('#minPrice').val(minPrice);
+            $('#maxPrice').val(maxPrice);
+            $('#minMileage').val(minMileage);
+            $('#maxMileage').val(maxMileage);
         }
         const list = listTemplate({
             cars: carsArray

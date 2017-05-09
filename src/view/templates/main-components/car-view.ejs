@@ -7,7 +7,7 @@
 <span id="viewAmount" class="glyphicon glyphicon-eye-open"> Просмотров: <%= car.views %>.</span>
 <div class="carView">
     <table id="carViewInfo" class="col-sm-5">
-        <tr>
+        <tr id="trPrice">
             <td id="viewPrice">Цена: </td>
             <td>
                 <p id="BYNPrice"><%= car.price %> BYN</p>
@@ -15,30 +15,32 @@
                 <%= Math.round(car.price/2.075) %> EUR<br>
             </td>
         </tr>
-        <tr>
-            <td>Год: </td>
-            <td><%= car.year %> г.</td>
-        </tr>
-        <tr>
-            <td>Пробег: </td>
-            <td><%= car.mileage %> км</td>
-        </tr>
-        <tr>
-            <td>Топливо: </td>
-            <td><%= car.gasoline %></td>
-        </tr>
-        <tr>
-            <td>Трансмиссия: </td>
-            <td><%= car.transmission %></td>
-        </tr>
-        <tr>
-            <td>Объем двигателя: </td>
-            <td><%= car.capacity %> л</td>
-        </tr>
-        <tr>
-            <td>Описание: </td>
-            <td><%= car.about %></td>
-        </tr>
+        <tbody id="otherInfo">
+            <tr>
+                <td>Год: </td>
+                <td><%= car.year %> г.</td>
+            </tr>
+            <tr>
+                <td>Пробег: </td>
+                <td><%= car.mileage %> км</td>
+            </tr>
+            <tr>
+                <td>Топливо: </td>
+                <td><%= car.gasoline %></td>
+            </tr>
+            <tr>
+                <td>Трансмиссия: </td>
+                <td><%= car.transmission %></td>
+            </tr>
+            <tr>
+                <td>Объем двигателя: </td>
+                <td><%= car.capacity %> л</td>
+            </tr>
+            <tr>
+                <td>Описание: </td>
+                <td><%= car.about %></td>
+            </tr>
+        </tbody>
     </table>
     <p class="col-sm-7">
         <img id="img" height="500px" class="img-thumbnail" src="<%= car.photo %>">
