@@ -4,15 +4,15 @@
         <a href="/" class="btn btn-success">Главная</a>
     </span>
 </h2>
-<span>Просмотров: <%= car.views %>.</span>
+<span id="viewAmount" class="glyphicon glyphicon-eye-open"> Просмотров: <%= car.views %>.</span>
 <div>
-    <table class="col-sm-4">
+    <table id="carViewInfo" class="col-sm-5">
         <tr>
-            <td>Цена: </td>
+            <td id="viewPrice">Цена: </td>
             <td>
-                <%= car.price %> BYN<br>
+                <p id="BYNPrice"><%= car.price %> BYN</p>
                 <%= Math.round(car.price/1.885) %> USD<br>
-                <%= Math.round(car.price/2.075) %> EUR
+                <%= Math.round(car.price/2.075) %> EUR<br>
             </td>
         </tr>
         <tr>
@@ -32,7 +32,7 @@
             <td><%= car.capacity %> л</td>
         </tr>
     </table>
-    <p class="col-sm-8">
-        <img id="img" width="500px" src="<%= car.photo %>">
+    <p class="col-sm-7">
+        <img id="img" width="600px" src="<%= car.photo %>">
     </p>
 </div>

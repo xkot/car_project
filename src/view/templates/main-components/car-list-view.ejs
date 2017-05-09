@@ -1,11 +1,13 @@
 <div id="carList">
-    <table class="table table-bordered">
+    <table class="table table-condensed">
         <tbody>
         <% carTr.forEach(function (cars) { %>
         <tr class="carTr">
             <% cars.forEach(function (car) { %>
-                <td id="<%= car.id %>">
-                    <img id="img" height="100px" src="<%= car.photo %>">
+                <td id="<%= car.id %>" class="carTd">
+                    <p id="listViewImg">
+                        <img class="img-rounded" width="150" height="100" src="<%= car.photo %>">
+                    </p>
                     <p id="carName">
                         <%= car.brand %>, <%= car.model %>
                     </p>

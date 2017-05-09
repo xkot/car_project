@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import filtertemplate from '../view/templates/filter.ejs';
 import listTemplate from '../view/templates/admin-components/car-list.ejs';
 import template from '../view/templates/admin-main.ejs';
 import {findCars} from '../service/api';
@@ -10,6 +11,22 @@ export default function() {
     const content = template();
     $('#app').html(content);
     showList();
+    $(document).ready(function () {
+        const filter = filtertemplate();
+        const filterBlock = $('.filterBlock');
+        filterBlock.html(filter);
+        filterBlock.on('submit', function (e) {
+            let filterValue = '';
+            filterValue += $('#brand').val() + '*';
+            filterValue += $('#model').val() + '*';
+            filterValue += $('#minPrice').val() + '*';
+            filterValue += $('#maxPrice').val() + '*';
+            filterValue += $('#minMileage').val() + '*';
+            filterValue += $('#maxMileage').val();
+            document.location.href = `/search?${filterValue}`;
+            e.preventDefault();
+        })
+    });
 }
 
 function showList() {

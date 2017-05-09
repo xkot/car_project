@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import elasticlunr from 'elasticlunr';
+import filtertemplate from '../../view/templates/filter.ejs';
 import searchTemplate from '../../view/templates/main-components/search-results.ejs';
 import {getCarById} from '../../service/api';
 import {getCars} from '../../service/api';
@@ -20,32 +21,52 @@ export default function() {
     });
     let foundCars = [];
     if (arrSearch.length === 1) {
-        const searchResult = index.search(searchValue);
+        const searchResult = index.search({
+            brand: searchValue,
+        });
         searchResult.forEach(function (element, i) {
             let id = element.ref;
             foundCars[i] = getCarById(id);
         });
     }
     else {
+        foundCars = getCars();
         let carBrand = arrSearch[0];
         let carModel = arrSearch[1];
-        let filterResult = [];
+        let minPrice = arrSearch[2];
+        let maxPrice = arrSearch[3];
+        let minMileage = arrSearch[4];
+        let maxMileage = arrSearch[5];
         if (carBrand) {
-            alert(carBrand);
-            filterResult = index.search({
-                brand: carBrand
+            foundCars = foundCars.filter(function (car) {
+                return car.brand.toUpperCase() === carBrand.toUpperCase();
             });
         }
         if (carModel) {
-            alert(carModel);
-            filterResult = index.search({
-                model: carModel
+            foundCars = foundCars.filter(function (car) {
+                return car.model.toUpperCase() === carModel.toUpperCase();
             });
         }
-        filterResult.forEach(function (element, i) {
-            let id = element.ref;
-            foundCars[i] = getCarById(id);
-        });
+        if (minPrice) {
+            foundCars = foundCars.filter(function (car) {
+                return Number(car.price) >= Number(minPrice);
+            });
+        }
+        if (maxPrice) {
+            foundCars = foundCars.filter(function (car) {
+                return Number(car.price) <= Number(minPrice);
+            });
+        }
+        if (minMileage) {
+            foundCars = foundCars.filter(function (car) {
+                return Number(car.mileage) >= Number(minMileage);
+            });
+        }
+        if (maxMileage) {
+            foundCars = foundCars.filter(function (car) {
+                return Number(car.mileage) <= Number(maxMileage);
+            });
+        }
     }
 
     const searchList = searchTemplate({
@@ -53,4 +74,21 @@ export default function() {
         carAmount: foundCars.length
     });
     $('#app').html(searchList);
+
+    $(document).ready(function () {
+        const filter = filtertemplate();
+        const filterBlock = $('.filterBlock');
+        filterBlock.html(filter);
+        filterBlock.on('submit', function (e) {
+            let filterValue = '';
+            filterValue += $('#brand').val() + '*';
+            filterValue += $('#model').val() + '*';
+            filterValue += $('#minPrice').val() + '*';
+            filterValue += $('#maxPrice').val() + '*';
+            filterValue += $('#minMileage').val() + '*';
+            filterValue += $('#maxMileage').val();
+            document.location.href = `/search?${filterValue}`;
+            e.preventDefault();
+        })
+    });
 }

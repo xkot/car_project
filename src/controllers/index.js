@@ -54,7 +54,8 @@ export default function() {
     }
     $(document).ready(function () {
         const filter = filtertemplate();
-        $('#filterBlock').html(filter);
+        const filterBlock = $('.filterBlock');
+        filterBlock.html(filter);
         $('#carList').on('click', 'td', function () {
             const id = $(this).attr('id');
             document.location.href = `/car#${id}`;
@@ -63,12 +64,16 @@ export default function() {
             let searchValue = $('#searchInput').val();
             document.location.href = `/search?${searchValue}`;
         });
-        $('#filterBlock').on('submit', function (e) {
+        filterBlock.on('submit', function (e) {
             let filterValue = '';
             filterValue += $('#brand').val() + '*';
-            filterValue += $('#model').val();
+            filterValue += $('#model').val() + '*';
+            filterValue += $('#minPrice').val() + '*';
+            filterValue += $('#maxPrice').val() + '*';
+            filterValue += $('#minMileage').val() + '*';
+            filterValue += $('#maxMileage').val();
             document.location.href = `/search?${filterValue}`;
             e.preventDefault();
-        })
+        });
     });
 }
