@@ -39,11 +39,17 @@ function showList() {
         contentPlace.html(list);
         $(document).ready(function () {
             let table = $('table');
-            $('.deleteButton').toggle();
-            $('.editButton').toggle();
             $('tr').hover(function() {
-                $('tr:hover:last-child').toggle();
-            });
+                let currentTd = $(this).children('td:last-child');
+                currentTd.children('.deleteButton').removeClass('hidden');
+                currentTd.children('.editButton').removeClass('hidden');
+            },
+                function() {
+                    let currentTd = $(this).children('td:last-child');
+                    currentTd.children('.deleteButton').addClass('hidden');
+                    currentTd.children('.editButton').addClass('hidden');
+                },
+            );
             table.on('click', '.deleteButton', function () {
                 if (confirm('Вы уверены, что хотите удалить данную запись?')) {
                     const id = $(this).parent().attr('id');

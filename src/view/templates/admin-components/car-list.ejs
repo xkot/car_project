@@ -13,7 +13,7 @@
         <tbody>
         <% cars.forEach(function (car) { %>
         <tr class="carTr">
-            <td><img id="img" height="100px" align="center" src="<%= car.photo %>"></td>
+            <td><img id="img" height="100" width="130" src="<%= car.photo %>"></td>
             <td><%= car.brand %></td>
             <td><%= car.model %></td>
             <td><%= car.price %> BYN</td>
@@ -24,8 +24,12 @@
                 Объем двигателя: <%= car.capacity %>
             </td>
             <td id="<%= car.id %>">
-                <button type="button" class="deleteButton btn btn-danger">Удалить</button> <br>
-                <button type="button" class="editButton btn btn-warning">Редактировать</button>
+                <button type="button" class="deleteButton btn btn-danger hidden">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button> <br>
+                <button type="button" class="editButton btn btn-warning hidden">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
             </td>
         </tr>
         <% }); %>

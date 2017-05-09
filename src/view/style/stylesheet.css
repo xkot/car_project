@@ -80,9 +80,9 @@
     padding: 10px;
     box-shadow: 0 3px 7px rgba(0,0,0,0.5);
 }
-/*.table-hover > tbody > tr:hover > {*/
-    /*background-color: lightgray;*/
-/*}*/
+button {
+    margin: 5px;
+}
 form {
     max-width: 550px;
     margin: auto;
