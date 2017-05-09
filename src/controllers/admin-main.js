@@ -17,12 +17,12 @@ export default function() {
         filterBlock.html(filter);
         filterBlock.on('submit', function (e) {
             let filterValue = '';
-            filterValue += $('#brand').val() + '*';
-            filterValue += $('#model').val() + '*';
-            filterValue += $('#minPrice').val() + '*';
-            filterValue += $('#maxPrice').val() + '*';
-            filterValue += $('#minMileage').val() + '*';
-            filterValue += $('#maxMileage').val();
+            filterValue += 'brand=' + $('#brand').val();
+            filterValue += '&model=' + $('#model').val();
+            filterValue += '&fromPrice=' + $('#minPrice').val();
+            filterValue += '&toPrice=' + $('#maxPrice').val();
+            filterValue += '&minMileage=' + $('#minMileage').val();
+            filterValue += '&maxMileage=' + $('#maxMileage').val();
             document.location.href = `/admin/search?${filterValue}`;
             e.preventDefault();
         })
@@ -36,13 +36,13 @@ function showList() {
         if (document.location.search) {
             let search = document.location.search;
             let searchValue = search.substr(1);
-            let arrSearch = searchValue.split('*');
-            let carBrand = arrSearch[0];
-            let carModel = arrSearch[1];
-            let minPrice = arrSearch[2];
-            let maxPrice = arrSearch[3];
-            let minMileage = arrSearch[4];
-            let maxMileage = arrSearch[5];
+            let arrSearch = searchValue.split('&');
+            let carBrand = arrSearch[0].substr(6);
+            let carModel = arrSearch[1].substr(6);
+            let minPrice = arrSearch[2].substr(10);
+            let maxPrice = arrSearch[3].substr(8);
+            let minMileage = arrSearch[4].substr(11);
+            let maxMileage = arrSearch[5].substr(11);
             if (carBrand) {
                 carsArray = carsArray.filter(function (car) {
                     return car.brand.toUpperCase() === carBrand.toUpperCase();

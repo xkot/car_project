@@ -86,7 +86,7 @@ function setRandom() {
         car.transmission = "Автомат";
         car.gasoline = "Бензин";
         car.price = getRandom(3000, 70001);
-        car.capacity = getRandomCapacity(8, 60);
+        car.capacity = getRandomCapacity(8, 90);
         car.id = i + 1;
         car.views = 0;
         car.about = "Не бита, не крашена";

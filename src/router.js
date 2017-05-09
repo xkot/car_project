@@ -4,7 +4,6 @@ import admin from './controllers/admin-main';
 import carDetails from './controllers/main-components/car-details';
 import editCar from './controllers/admin-components/edit-car-page';
 import index from './controllers/index';
-import searchCar from './controllers/main-components/search-results';
 
 $(document).on('click', 'a[href^="/"]', function (e) {
     const href = $(e.currentTarget).attr('href');
@@ -29,5 +28,5 @@ page('/admin/new', editCar);
 page('/admin/edit*', editCar);
 page('/admin/search*', admin);
 page('/car*', carDetails);
-page('/search*', searchCar);
+page('/search*', index);
 page('/', index);
