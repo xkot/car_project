@@ -20,11 +20,6 @@
     display: table-column;
     padding: 20px;
 }
-.filterBlock {
-    padding-top: 30px;
-    padding-bottom: 20px;
-    box-shadow: 0 3px 7px rgba(0,0,0,0.5);
-}
 #listViewImg {
     text-align: center;
     height: 110px;
@@ -70,6 +65,11 @@
 .deleteButton, .editButton {
     width: 80%;
 }
+.filterBlock {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.5);
+}
 .header {
     background-color: lightgray;
     padding: 5px;
@@ -80,6 +80,9 @@
     padding: 10px;
     box-shadow: 0 3px 7px rgba(0,0,0,0.5);
 }
+/*.table-hover > tbody > tr:hover > {*/
+    /*background-color: lightgray;*/
+/*}*/
 form {
     max-width: 550px;
     margin: auto;

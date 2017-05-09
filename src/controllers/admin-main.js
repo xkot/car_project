@@ -39,7 +39,11 @@ function showList() {
         contentPlace.html(list);
         $(document).ready(function () {
             let table = $('table');
-            table.filter('.deleteButton').className = 'hidden';
+            $('.deleteButton').toggle();
+            $('.editButton').toggle();
+            $('tr').hover(function() {
+                $('tr:hover:last-child').toggle();
+            });
             table.on('click', '.deleteButton', function () {
                 if (confirm('Вы уверены, что хотите удалить данную запись?')) {
                     const id = $(this).parent().attr('id');
@@ -51,6 +55,7 @@ function showList() {
                 const id = $(this).parent().attr('id');
                 document.location.href = `/admin/edit#${id}`;
             });
+
         });
     }
     else {
