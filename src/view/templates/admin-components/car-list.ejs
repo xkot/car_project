@@ -7,13 +7,13 @@
             <td>Модель</td>
             <td>Цена</td>
             <td>Другая информация</td>
-            <td></td>
+            <td width="70"></td>
         </tr>
         </thead>
         <tbody>
         <% cars.forEach(function (car) { %>
         <tr class="carTr">
-            <td><img id="img" height="100" width="130" src="<%= car.photo %>"></td>
+            <td><img class="listImg" height="100" width="130" src="<%= car.photo %>"></td>
             <td><%= car.brand %></td>
             <td><%= car.model %></td>
             <td><%= car.price %> BYN</td>
@@ -24,10 +24,10 @@
                 Объем двигателя: <%= car.capacity %>
             </td>
             <td id="<%= car.id %>">
-                <button type="button" class="deleteButton btn btn-danger hidden">
+                <button type="button" class="deleteButton btn hidden">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button> <br>
-                <button type="button" class="editButton btn btn-warning hidden">
+                <button type="button" class="editButton btn hidden">
                     <span class="glyphicon glyphicon-edit"></span>
                 </button>
             </td>

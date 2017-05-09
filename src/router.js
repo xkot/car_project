@@ -27,6 +27,7 @@ $(window).on('popstate', function (e) {
 page('/admin', admin);
 page('/admin/new', editCar);
 page('/admin/edit*', editCar);
+page('/admin/search*', admin);
 page('/car*', carDetails);
 page('/search*', searchCar);
 page('/', index);

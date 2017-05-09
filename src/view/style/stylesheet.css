@@ -57,6 +57,9 @@
     vertical-align: top;
     font-size: large;
 }
+.carView {
+    margin: 30px;
+}
 .carTd:hover {
     background-color: whitesmoke;
     box-shadow: 0 3px 7px rgba(0,0,0,0.5);

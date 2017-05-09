@@ -23,7 +23,7 @@ export default function() {
             filterValue += $('#maxPrice').val() + '*';
             filterValue += $('#minMileage').val() + '*';
             filterValue += $('#maxMileage').val();
-            document.location.href = `/search?${filterValue}`;
+            document.location.href = `/admin/search?${filterValue}`;
             e.preventDefault();
         })
     });
@@ -32,7 +32,48 @@ export default function() {
 function showList() {
     const contentPlace = $('#list');
     if (findCars()) {
-        const carsArray = getCars();
+        let carsArray = getCars();
+        if (document.location.search) {
+            let search = document.location.search;
+            let searchValue = search.substr(1);
+            let arrSearch = searchValue.split('*');
+            let carBrand = arrSearch[0];
+            let carModel = arrSearch[1];
+            let minPrice = arrSearch[2];
+            let maxPrice = arrSearch[3];
+            let minMileage = arrSearch[4];
+            let maxMileage = arrSearch[5];
+            if (carBrand) {
+                carsArray = carsArray.filter(function (car) {
+                    return car.brand.toUpperCase() === carBrand.toUpperCase();
+                });
+            }
+            if (carModel) {
+                carsArray = carsArray.filter(function (car) {
+                    return car.model.toUpperCase() === carModel.toUpperCase();
+                });
+            }
+            if (minPrice) {
+                carsArray = carsArray.filter(function (car) {
+                    return Number(car.price) >= Number(minPrice);
+                });
+            }
+            if (maxPrice) {
+                carsArray = carsArray.filter(function (car) {
+                    return Number(car.price) <= Number(minPrice);
+                });
+            }
+            if (minMileage) {
+                carsArray = carsArray.filter(function (car) {
+                    return Number(car.mileage) >= Number(minMileage);
+                });
+            }
+            if (maxMileage) {
+                carsArray = carsArray.filter(function (car) {
+                    return Number(car.mileage) <= Number(maxMileage);
+                });
+            }
+        }
         const list = listTemplate({
             cars: carsArray
         });

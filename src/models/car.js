@@ -10,7 +10,6 @@ class Car {
         this.capacity = options.capacity;
         this.price = options.price;
         this.about = options.about;
-        //this.id = options.id;
         this.photo = options.photo;
         this.views = 0;
     }
