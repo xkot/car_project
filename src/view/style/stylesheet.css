@@ -26,7 +26,7 @@
     width: 160px;
     margin: auto;
 }
-#manual, #auto {
+#manualBtn, #autoBtn {
     margin: auto;
     width: 49%;
 }
