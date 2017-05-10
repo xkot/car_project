@@ -42,7 +42,7 @@
 #searchInput {
     width: 200px;
     border-radius: 5px;
-    margin-left: 35%;
+    margin-left: 30%;
 }
 #searchInput:focus {
     border-color: #39e97a;

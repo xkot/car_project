@@ -10,7 +10,7 @@ export default function() {
     $('#brand').autocomplete({
         source: brandNames
     });
-    filterBlock.on('click', '#manual', function () {
+    filterBlock.on('click', '#manualBtn', function () {
         if ($(this).hasClass('active')) {
             $(this).removeClass('active');
         }
@@ -19,7 +19,7 @@ export default function() {
             $('#auto').removeClass('active');
         }
     });
-    filterBlock.on('click', '#auto', function () {
+    filterBlock.on('click', '#autoBtn', function () {
         if ($(this).hasClass('active')) {
             $(this).removeClass('active');
         }
